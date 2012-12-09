@@ -1,5 +1,5 @@
 {
-    "name": "monolog/wrapper-magick",
+    "name": "isra00/wrapper-magick",
     "description": "Simple PHP object-oriented wrapper for GraphicsMagick",
     "keywords": ["graphics", "graphicsmagick", "convert"],
     "homepage": "http://github.com/isra00/WrapperMagick",
