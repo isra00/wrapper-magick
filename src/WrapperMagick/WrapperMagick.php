@@ -20,7 +20,6 @@ class WrapperMagick
     protected $comando = "convert ";
     protected $fichero;
 
-
     public function __construct($fichero)
     {
         $this->fichero = $fichero;
