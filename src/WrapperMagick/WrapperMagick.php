@@ -52,19 +52,33 @@ class WrapperMagick
      */
     public function guardar($destino)
     {
-        
-        $origen = $this->fichero;
-        $origen = "'$origen'";
-        
-        //Si el origen es PDF, agrega [0] al nombre (sí, GraphicsMagick lee PDF :-)
-        if (mime_content_type($this->fichero) == 'application/pdf') {
-            $origen .= '[0]'; //Primera página del PDF
-        }
-        
-        $this->comando .= " '$origen' '$destino'";
-        system($this->comando);
+        $this->execCommand($this->assemble($destino));
         
         //Si el fichero destino existe, todo ha ido bien
         return file_exists($destino);
+    }
+    
+    public function assemble($destino)
+    {
+        $origen = $this->fichero;
+        
+        //Si el origen es PDF, agrega [0] al nombre (sí, GraphicsMagick lee PDF :-)
+        if ($this->getContentType($this->fichero) == 'application/pdf') {
+            $origen .= '[0]'; //Primera página del PDF
+        }
+        
+        $this->comando .= " $origen $destino";
+        
+        return $this->comando;
+    }
+    
+    protected function execCommand($command)
+    {
+        exec($command);
+    }
+    
+    protected function getContentType($file)
+    {
+        return mime_content_type($file);
     }
 }
