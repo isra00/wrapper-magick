@@ -1,0 +1,1 @@
+[![Build Status](https://secure.travis-ci.org/isra00/wrapper-magick.png)](http://travis-ci.org/isra00/wrapper-magick)
