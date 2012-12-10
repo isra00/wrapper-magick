@@ -24,7 +24,7 @@ class WrapperMagickTest extends \PHPUnit_Framework_TestCase
 			->will($this->returnValue('image/jpeg'));
 	
 		$output = $this->obj->redimensionar(123)->assemble('destino');
-		echo $output . "\n";
+		$this->assertEquals('convert  -resize 123x test.ing destino', $output);
 	}
 	
 	
